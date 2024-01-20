@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
-import static com.revrobotics.SparkMaxLimitSwitch.Type.kNormallyClosed;
-import static com.revrobotics.SparkMaxLimitSwitch.Type.kNormallyOpen;
+import static com.revrobotics.SparkLimitSwitch.Type.kNormallyClosed;
+import static com.revrobotics.SparkLimitSwitch.Type.kNormallyOpen;
 import static frc.robot.Constants.ExtensionConstants.initialAllowedError;
 import static frc.robot.Constants.ExtensionConstants.initialD;
 import static frc.robot.Constants.ExtensionConstants.initialFF;
@@ -19,12 +19,12 @@ import static frc.robot.Constants.ExtensionConstants.motorRevolutionsPerInch;
 import static frc.robot.Constants.ExtensionConstants.TravelMode.Velocity;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMax.IdleMode;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxLimitSwitch.Type;
+import com.revrobotics.CANSparkBase.IdleMode;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.SparkLimitSwitch.Type;
 import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkMaxLimitSwitch;
-import com.revrobotics.SparkMaxPIDController;
+import com.revrobotics.SparkLimitSwitch;
+import com.revrobotics.SparkPIDController;
 
 //import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -33,10 +33,10 @@ import frc.robot.Constants.ExtensionConstants.TravelMode;
 
 public class SmartMotionExtension extends SubsystemBase {
   private CANSparkMax m_motor;
-  private SparkMaxPIDController pidController;
+  private SparkPIDController pidController;
   private RelativeEncoder m_encoder;
-  private SparkMaxLimitSwitch m_forwardLimit;
-  private SparkMaxLimitSwitch m_reverseLimit;
+  private SparkLimitSwitch m_forwardLimit;
+  private SparkLimitSwitch m_reverseLimit;
   public double kP, kI, kD, kIz, kFF, maxOutput, minOutput, maxRPM, maxVel, minVel, maxAcc, allowedErr, maxInches;
   private double inchesGoal, revolutionsGoal, velocityGoal = 0;
   public TravelMode TravelMode;
@@ -113,8 +113,8 @@ public class SmartMotionExtension extends SubsystemBase {
     m_motor.setIdleMode(IdleMode.kBrake);
     
     // configure limit switches
-    m_forwardLimit = m_motor.getForwardLimitSwitch(kNormallyOpen);
-    m_reverseLimit = m_motor.getReverseLimitSwitch(kNormallyOpen);
+    m_forwardLimit = m_motor.getForwardLimitSwitch(kNormallyClosed);
+    m_reverseLimit = m_motor.getReverseLimitSwitch(kNormallyClosed);
     m_forwardLimit.enableLimitSwitch(true);
     m_reverseLimit.enableLimitSwitch(true);
 
