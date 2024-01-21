@@ -24,6 +24,27 @@ import edu.wpi.first.math.util.Units;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+  public static final class CANIDs {
+    // SPARK MAX CAN IDs
+    public static final int kFrontLeftDrivingCanId = 1;
+    public static final int kRearLeftDrivingCanId = 2;
+    public static final int kFrontRightDrivingCanId = 3;
+    public static final int kRearRightDrivingCanId = 4;
+
+    public static final int kFrontLeftTurningCanId = 5;
+    public static final int kRearLeftTurningCanId = 6;
+    public static final int kFrontRightTurningCanId = 7;
+    public static final int kRearRightTurningCanId = 8;
+
+    public static final int kExtensionMotor = 9;
+    public static final int kArmMotor = 0;
+    public static final int kIntakeLeadMotor = 10;
+    public static final int kIntakeFollowMotor = 11;
+    public static final int kShooterMotorA = 0;
+    public static final int kShooterMotorB = 0;
+  }
+
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds
@@ -169,59 +190,42 @@ public final class Constants {
     }
   }
 
-  public static final class CANIDs{
-   // SPARK MAX CAN IDs
-   public static final int kFrontLeftDrivingCanId = 1;
-   public static final int kRearLeftDrivingCanId = 2;
-   public static final int kFrontRightDrivingCanId = 3;
-   public static final int kRearRightDrivingCanId = 4;
-
-   public static final int kFrontLeftTurningCanId = 5;
-   public static final int kRearLeftTurningCanId = 6;
-   public static final int kFrontRightTurningCanId = 7;
-   public static final int kRearRightTurningCanId = 8;
-   public static final int  kExtensionMotor = 9;
-  public static int kShooterMotorA;
-public static int kShooterMotorB;
-  }
-
   /*
      * Initial Elevator values used at startup
-     */
+   */
     public static final class ShooterConstants {
-      // PID coefficients
-      public static final double initialP = 5e-5;
-      public static final double initialI = 1e-6;
-      public static final double initialD = 0;
-      public static final double initialIz = 0;
-      public static final double initialFF = 0.000156;
-      public static final double initialMaxOutput = 1;
-      public static final double initialMinOutput = -1;
-      public static final double initialMaxRPM = 5700;
+    // PID coefficients
+    public static final double initialP = 5e-5;
+    public static final double initialI = 1e-6;
+    public static final double initialD = 0;
+    public static final double initialIz = 0;
+    public static final double initialFF = 0.000156;
+    public static final double initialMaxOutput = 1;
+    public static final double initialMinOutput = -1;
+    public static final double initialMaxRPM = 5700;
 
-      // Smart Motion Coefficients
-      public static final double initialMaxVel = 2000; // rpm
-      public static final double initialMinVel = -2000; // rpm
-      public static final double initialMaxAcc = 2500;
-      public static final double initialAllowedError = .02;
+    // Smart Motion Coefficients
+    public static final double initialMaxVel = 2000; // rpm
+    public static final double initialMinVel = -2000; // rpm
+    public static final double initialMaxAcc = 2500;
+    public static final double initialAllowedError = .02;
       public static final double initialMaxInches = 30;
 
-      private static final double chainPitch = 0.25; // inches
-      private static final int chainSprocket = 22; // teeth
-      private static final double sprocketCircumfrence = chainPitch * chainSprocket;
-      private static final double gearReduction = 15.0;
+    private static final double chainPitch = 0.25; // inches
+    private static final int chainSprocket = 22; // teeth
+    private static final double sprocketCircumfrence = chainPitch * chainSprocket;
+    private static final double gearReduction = 15.0;
       private static final double fudgeFactor = 0.80; //adjust using actual measurements
       public static final double motorRevolutionsPerInch = (gearReduction / sprocketCircumfrence)*fudgeFactor;
 
-      public static enum TravelMode {
-          Velocity,
-          Position;
-      }
+    public static enum TravelMode {
+      Velocity,
+      Position;
+    }
 
-      public static enum LimitSwich{
-          Forward,
-          Reverse
-      }
-
+    public static enum LimitSwich {
+      Forward,
+      Reverse
+    }
   }
 }
