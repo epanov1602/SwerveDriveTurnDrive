@@ -1,24 +1,10 @@
 package frc.robot.subsystems;
 
 import static com.revrobotics.SparkLimitSwitch.Type.kNormallyClosed;
-import static frc.robot.Constants.ShooterConstants.initialAllowedError;
-import static frc.robot.Constants.ShooterConstants.initialD;
-import static frc.robot.Constants.ShooterConstants.initialFF;
-import static frc.robot.Constants.ShooterConstants.initialI;
-import static frc.robot.Constants.ShooterConstants.initialIz;
-import static frc.robot.Constants.ShooterConstants.initialMaxAcc;
-import static frc.robot.Constants.ShooterConstants.initialMaxInches;
-import static frc.robot.Constants.ShooterConstants.initialMaxOutput;
-import static frc.robot.Constants.ShooterConstants.initialMaxRPM;
-import static frc.robot.Constants.ShooterConstants.initialMaxVel;
-import static frc.robot.Constants.ShooterConstants.initialMinOutput;
-import static frc.robot.Constants.ShooterConstants.initialMinVel;
-import static frc.robot.Constants.ShooterConstants.initialP;
-import static frc.robot.Constants.ShooterConstants.motorRevolutionsPerInch;
-import static frc.robot.Constants.ShooterConstants.TravelMode.Velocity;
+import static frc.robot.Constants.ShooterConstants.*;
 
 import com.revrobotics.CANSparkBase;
-import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkFlex;
 //import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkBase.IdleMode;
 
@@ -33,8 +19,8 @@ import frc.robot.Constants;
 import frc.robot.Constants.ShooterConstants.TravelMode;
 
 public class SmartMotionShooter extends SubsystemBase {
-  private CANSparkMax leadMotor;
-  private CANSparkMax followMotor;
+  private CANSparkFlex leadMotor;
+  private CANSparkFlex followMotor;
   private SparkPIDController pidController;
   private RelativeEncoder m_encoder;
   private SparkLimitSwitch m_forwardLimit;
@@ -119,11 +105,11 @@ public class SmartMotionShooter extends SubsystemBase {
 
   /** Creates a new SmartMotionShooter. */
   public SmartMotionShooter() {
-    leadMotor = new CANSparkMax(Constants.CANIDs.kShooterMotorA, MotorType.kBrushless);
+    leadMotor = new CANSparkFlex(Constants.CANIDs.kShooterMotorA, MotorType.kBrushless);
     leadMotor.restoreFactoryDefaults();
     leadMotor.setInverted(false);
     leadMotor.setIdleMode(IdleMode.kBrake);
-    followMotor = new CANSparkMax(Constants.CANIDs.kShooterMotorB, MotorType.kBrushless);
+    followMotor = new CANSparkFlex(Constants.CANIDs.kShooterMotorB, MotorType.kBrushless);
     followMotor.restoreFactoryDefaults();
     followMotor.follow(leadMotor, true);
 
@@ -291,7 +277,7 @@ public class SmartMotionShooter extends SubsystemBase {
     // setPoint = getRevolutionsGoal();
     // SmartDashboard.putNumber("Inches Goal", setPoint / motorRevolutionsPerInch);
     // }
-    pidController.setReference(setPoint, CANSparkMax.ControlType.kSmartMotion);
+    pidController.setReference(setPoint, CANSparkFlex.ControlType.kSmartMotion);
     processVariable = m_encoder.getPosition();
     // }
 
