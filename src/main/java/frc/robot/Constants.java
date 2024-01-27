@@ -38,8 +38,7 @@ public final class Constants {
 
     public static final int kExtensionMotor = 9;
     public static final int kArmMotor = 0;
-    public static final int kIntakeLeadMotor = 10;
-    public static final int kIntakeFollowMotor = 11;
+    public static final int kIntakeMotor = 10;
     public static final int kShooterMotorA = 0;
     public static final int kShooterMotorB = 0;
   }
@@ -220,7 +219,6 @@ public final class Constants {
     public static enum TravelMode {
       Velocity,
       Position;
-    }
 
     public static enum LimitSwich {
       Forward,
@@ -268,4 +266,4 @@ public final class Constants {
     }
   }
 }
-
+}
