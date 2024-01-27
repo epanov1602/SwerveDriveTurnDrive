@@ -40,7 +40,7 @@ public final class Constants {
     public static final int kIntakeMotor = 10;
     public static final int kShooterMotorA = 11;
     public static final int kArmMotor = 12;
-    public static final int kShooterMotorB = 12;
+    public static final int kShooterMotorB = 13;
   }
 
   public static final class DriveConstants {
