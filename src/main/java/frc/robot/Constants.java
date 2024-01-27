@@ -37,10 +37,10 @@ public final class Constants {
     public static final int kRearRightTurningCanId = 8;
 
     public static final int kExtensionMotor = 9;
-    public static final int kArmMotor = 0;
     public static final int kIntakeMotor = 10;
-    public static final int kShooterMotorA = 0;
-    public static final int kShooterMotorB = 0;
+    public static final int kShooterMotorA = 11;
+    public static final int kArmMotor = 12;
+    public static final int kShooterMotorB = 12;
   }
 
   public static final class DriveConstants {
